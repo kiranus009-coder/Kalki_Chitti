@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CreditCard, DollarSign, ReceiptText, WalletCards } from "lucide-react";
+import { ArrowRight, WalletCards } from "lucide-react";
 import { DashboardShell } from "@/components/dashboard-shell";
 
 const spend = [
@@ -26,8 +26,12 @@ export default function BillingPage() {
         {spend.map((item) => (
           <div key={item.label} className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-glow">
             <div className="flex items-center justify-between">
-              <div className="rounded-xl border border-amber-400/20 bg-amber-500/10 p-2 text-amber-200"><WalletCards className="h-5 w-5" /></div>
-              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-emerald-300">{item.trend}</span>
+              <div className="rounded-xl border border-amber-400/20 bg-amber-500/10 p-2 text-amber-200">
+                <WalletCards className="h-5 w-5" />
+              </div>
+              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-emerald-300">
+                {item.trend}
+              </span>
             </div>
             <h2 className="mt-4 text-xl font-semibold text-white">{item.label}</h2>
             <p className="mt-3 text-2xl font-semibold text-amber-100">{item.value}</p>

@@ -1,16 +1,56 @@
-import { Sidebar } from "@/components/sidebar";
-import { Topbar } from "@/components/topbar";
+import {
+  Bot,
+  Gauge,
+  Layers3,
+  ShieldCheck,
+} from "lucide-react";
 
-export function DashboardShell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="min-h-screen bg-aurora text-white">
-      <div className="flex min-h-screen">
-        <Sidebar />
-        <div className="flex min-w-0 flex-1 flex-col">
-          <Topbar />
-          <main className="flex-1 px-6 py-6">{children}</main>
-        </div>
-      </div>
-    </div>
-  );
-}
+export const cards = [
+  {
+    label: "Applications",
+    value: "48",
+    delta: "+9.4%",
+    trend: "vs last week",
+    tint: "border-cyan-400/20 bg-cyan-500/10 text-cyan-300",
+    icon: Layers3,
+  },
+  {
+    label: "Agents",
+    value: "23",
+    delta: "+4.2%",
+    trend: "active",
+    tint: "border-violet-400/20 bg-violet-500/10 text-violet-300",
+    icon: Bot,
+  },
+  {
+    label: "Inference",
+    value: "3.8M",
+    delta: "+18.6%",
+    trend: "requests",
+    tint: "border-emerald-400/20 bg-emerald-500/10 text-emerald-300",
+    icon: Gauge,
+  },
+  {
+    label: "Guardrails",
+    value: "99.2%",
+    delta: "+0.8%",
+    trend: "pass rate",
+    tint: "border-rose-400/20 bg-rose-500/10 text-rose-300",
+    icon: ShieldCheck,
+  },
+];
+
+export const flowBars = [
+  { label: "Prompt stack", value: "94%", values: [38, 52, 62, 74, 86, 94, 98] },
+  { label: "Model route", value: "92%", values: [24, 36, 48, 58, 64, 76, 92] },
+  { label: "Agent tasks", value: "87%", values: [18, 28, 42, 60, 72, 80, 87] },
+];
+
+export const requestTable = [
+  { route: "/api/copilot/brief", model: "GPT-4.1", latency: "201 ms", cost: "$0.072" },
+  { route: "/api/retrieval/search", model: "Gemini 2.0", latency: "154 ms", cost: "$0.044" },
+  { route: "/api/guardrail/scan", model: "Claude 3.5", latency: "119 ms", cost: "$0.026" },
+  { route: "/api/assist/plan", model: "Llama 3.1", latency: "246 ms", cost: "$0.088" },
+];
+
+export const signalSeries = [32, 48, 55, 63, 78, 72, 82, 90, 88, 96, 94, 100];

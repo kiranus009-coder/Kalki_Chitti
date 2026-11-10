@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Chitti | AI Operations Console",
-  description: "Chitti AI operations platform for apps, models, knowledge, observability, usage, and governance.",
+  description: "Chitti AI operations dashboard for apps, models, knowledge, observability, billing, and security.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

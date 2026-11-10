@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { ArrowUpRight, Bot, Database, ShieldCheck, Sparkles, Cpu, Gauge, Layers3, Settings2 } from "lucide-react";
+import { ArrowUpRight, Bot, Cpu, Database, LayoutGrid, ShieldCheck, Sparkles } from "lucide-react";
 import { DashboardShell } from "@/components/dashboard-shell";
 
-const nav = [
-  { label: "Overview", href: "/overview" },
-  { label: "Agents", href: "/agents" },
-  { label: "Models", href: "/models" },
-  { label: "Knowledge", href: "/knowledge" },
-  { label: "Observability", href: "/observability" },
-  { label: "Billing", href: "/billing" },
-  { label: "Security", href: "/security" },
-  { label: "Settings", href: "/settings" },
+const overviewCards = [
+  { title: "Apps", value: "48", icon: LayoutGrid },
+  { title: "Agents", value: "23", icon: Bot },
+  { title: "Models", value: "16", icon: Cpu },
+  { title: "Guardrails", value: "97.6%", icon: ShieldCheck },
 ];
 
 export default function OverviewPage() {
@@ -27,14 +23,16 @@ export default function OverviewPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {[{ label: "Apps", value: "48", icon: Layers3 }, { label: "Agents", value: "23", icon: Bot }, { label: "Models", value: "16", icon: Cpu }, { label: "Guardrails", value: "97.6%", icon: ShieldCheck }].map(({ label, value, icon: Icon }) => (
-          <div key={label} className="rounded-2xl border border-white/10 bg-slate-900/70 p-4 shadow-glow">
+        {overviewCards.map(({ title, value, icon: Icon }) => (
+          <div key={title} className="rounded-2xl border border-white/10 bg-slate-900/70 p-4 shadow-glow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{label}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{title}</p>
                 <p className="mt-3 text-3xl font-semibold text-white">{value}</p>
               </div>
-              <div className="rounded-xl border border-cyan-400/20 bg-cyan-500/10 p-2 text-cyan-300"><Icon className="h-5 w-5" /></div>
+              <div className="rounded-xl border border-cyan-400/20 bg-cyan-500/10 p-2 text-cyan-300">
+                <Icon className="h-5 w-5" />
+              </div>
             </div>
           </div>
         ))}

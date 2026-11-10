@@ -1,52 +1,36 @@
-import Link from "next/link";
-import { Bell, BookOpenText, ChevronDown, LayoutGrid, Search, Sparkles, Zap } from "lucide-react";
+import { Bell, Search, Settings2 } from "lucide-react";
 
-const navItems = [
-  { href: "/overview", label: "Overview", icon: LayoutGrid },
-  { href: "/agents", label: "Agents", icon: Sparkles },
-  { href: "/models", label: "Models", icon: Zap },
-  { href: "/knowledge", label: "Knowledge", icon: BookOpenText },
-  { href: "/observability", label: "Observability", icon: Bell },
-  { href: "/billing", label: "Billing", icon: Bell },
-  { href: "/security", label: "Security", icon: Bell },
-  { href: "/settings", label: "Settings", icon: ChevronDown },
-];
-
-export function Sidebar() {
+export function Topbar() {
   return (
-    <aside className="flex h-screen w-[280px] flex-col border-r border-white/10 bg-slate-950/80 px-4 py-5 backdrop-blur-xl">
-      <div className="mb-8 flex items-center justify-between px-3">
+    <header className="sticky top-0 z-10 border-b border-white/10 bg-slate-950/75 px-6 py-4 backdrop-blur-xl">
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex w-full max-w-xl items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-3 py-2 text-slate-300 shadow-glow">
+          <Search className="h-4 w-4 text-slate-400" />
+          <input
+            aria-label="Search"
+            placeholder="Search apps, agents, logs..."
+            className="w-full bg-transparent text-sm text-white placeholder:text-slate-500 focus:outline-none"
+          />
+        </div>
+
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 via-sky-500 to-violet-500 font-bold text-slate-950 shadow-[0_0_24px_rgba(59,130,246,0.6)]">
-            C
-          </div>
-          <div>
-            <p className="text-lg font-semibold text-white">Chitti</p>
-            <p className="text-[10px] uppercase tracking-[0.22em] text-slate-400">AI Ops</p>
+          <button className="rounded-xl border border-white/10 bg-slate-900/60 p-2.5 text-slate-200 hover:border-cyan-400/20">
+            <Bell className="h-4 w-4" />
+          </button>
+          <button className="rounded-xl border border-white/10 bg-slate-900/60 p-2.5 text-slate-200 hover:border-cyan-400/20">
+            <Settings2 className="h-4 w-4" />
+          </button>
+          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-3 py-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 font-semibold text-slate-950">
+              K
+            </div>
+            <div className="leading-none">
+              <p className="text-sm font-medium text-white">Kalki</p>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-slate-400">Ops Admin</p>
+            </div>
           </div>
         </div>
       </div>
-
-      <nav className="space-y-2">
-        {navItems.map(({ href, label, icon: Icon }) => (
-          <Link
-            key={label}
-            href={href}
-            className="group flex items-center justify-between rounded-2xl border border-transparent px-3 py-2.5 text-sm text-slate-300 transition hover:border-cyan-400/20 hover:bg-slate-900/70 hover:text-white"
-          >
-            <span className="flex items-center gap-3">
-              <Icon className="h-4 w-4" />
-              {label}
-            </span>
-          </Link>
-        ))}
-      </nav>
-
-      <div className="mt-auto rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-500/10 via-slate-900 to-violet-500/10 p-4">
-        <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Live assist</p>
-        <h3 className="mt-2 text-lg font-semibold text-white">Chitti Agent</h3>
-        <p className="mt-2 text-sm text-slate-300">Human-safe orchestration across routing, retrieval, and response governance.</p>
-      </div>
-    </aside>
+    </header>
   );
 }

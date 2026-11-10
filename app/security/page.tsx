@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, LockKeyhole, ShieldCheck, UserCog, Users, Waypoints } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { DashboardShell } from "@/components/dashboard-shell";
 
 const security = [
@@ -26,8 +26,12 @@ export default function SecurityPage() {
         {security.map((item) => (
           <div key={item.title} className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-glow">
             <div className="flex items-center justify-between">
-              <div className="rounded-xl border border-rose-400/20 bg-rose-500/10 p-2 text-rose-200"><ShieldCheck className="h-5 w-5" /></div>
-              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-emerald-300">{item.badge}</span>
+              <div className="rounded-xl border border-rose-400/20 bg-rose-500/10 p-2 text-rose-200">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-emerald-300">
+                {item.badge}
+              </span>
             </div>
             <h2 className="mt-4 text-xl font-semibold text-white">{item.title}</h2>
             <p className="mt-3 text-2xl font-semibold text-rose-100">{item.value}</p>

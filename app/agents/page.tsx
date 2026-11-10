@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Bot, BrainCircuit, Database, MessageSquareText, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, BrainCircuit, ShieldCheck } from "lucide-react";
 import { DashboardShell } from "@/components/dashboard-shell";
 
 const agentCards = [
   { name: "Ops Copilot", status: "Ready", icon: Bot },
   { name: "Knowledge Synth", status: "Indexing", icon: BrainCircuit },
-  { name: "Review Loop", status: "Pending", icon: MessageSquareText },
+  { name: "Review Loop", status: "Pending", icon: ShieldCheck },
   { name: "Risk Monitor", status: "Watching", icon: ShieldCheck },
 ];
 
@@ -26,8 +26,12 @@ export default function AgentsPage() {
         {agentCards.map(({ name, status, icon: Icon }) => (
           <div key={name} className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-glow">
             <div className="flex items-center justify-between">
-              <div className="rounded-xl border border-violet-400/20 bg-violet-500/10 p-2 text-violet-200"><Icon className="h-5 w-5" /></div>
-              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-emerald-300">{status}</span>
+              <div className="rounded-xl border border-violet-400/20 bg-violet-500/10 p-2 text-violet-200">
+                <Icon className="h-5 w-5" />
+              </div>
+              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-emerald-300">
+                {status}
+              </span>
             </div>
             <h2 className="mt-4 text-xl font-semibold text-white">{name}</h2>
             <p className="mt-2 text-sm text-slate-300">Multi-step reasoning, context retrieval, and action execution for live production workflows.</p>

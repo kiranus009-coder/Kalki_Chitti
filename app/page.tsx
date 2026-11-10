@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Bell, Search, Sparkles, ArrowUpRight, BarChart3, Cpu, Bot, ShieldCheck, Database, Gauge, Layers3, CreditCard } from "lucide-react";
+import {
+  ArrowUpRight,
+  Bot,
+  BrainCircuit,
+  Gauge,
+  Layers3,
+  ShieldCheck,
+} from "lucide-react";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { cards, flowBars, requestTable, signalSeries } from "@/lib/data";
 
@@ -18,25 +25,28 @@ export default function HomePage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {cards.map((card) => (
-          <div key={card.label} className="rounded-2xl border border-white/10 bg-slate-900/70 p-4 shadow-glow backdrop-blur-sm">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{card.label}</p>
-                <p className="mt-3 text-3xl font-semibold text-white">{card.value}</p>
+        {cards.map((card) => {
+          const Icon = card.icon;
+          return (
+            <div key={card.label} className="rounded-2xl border border-white/10 bg-slate-900/70 p-4 shadow-glow backdrop-blur-sm">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{card.label}</p>
+                  <p className="mt-3 text-3xl font-semibold text-white">{card.value}</p>
+                </div>
+                <div className={`rounded-xl border p-2 ${card.tint}`}>
+                  <Icon className="h-5 w-5" />
+                </div>
               </div>
-              <div className={`rounded-xl border p-2 ${card.tint}`}>
-                <card.icon className="h-5 w-5" />
+              <div className="mt-4 flex items-center justify-between text-sm text-slate-300">
+                <span>{card.delta}</span>
+                <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-xs text-emerald-300">
+                  {card.trend}
+                </span>
               </div>
             </div>
-            <div className="mt-4 flex items-center justify-between text-sm text-slate-300">
-              <span>{card.delta}</span>
-              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-xs text-emerald-300">
-                {card.trend}
-              </span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-6 grid gap-5 xl:grid-cols-[1.7fr_1fr]">
@@ -79,9 +89,13 @@ export default function HomePage() {
             </div>
             <div className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-xs text-emerald-200">Stable</div>
           </div>
-          <div className="mt-5 flex items-end gap-1 h-36">
-            {signalSeries.map((point) => (
-              <div key={point} className="flex-1 rounded-t-xl bg-gradient-to-t from-violet-500/80 via-cyan-500/80 to-sky-300/80" style={{ height: `${point}%` }} />
+          <div className="mt-5 flex h-36 items-end gap-1">
+            {signalSeries.map((point, index) => (
+              <div
+                key={`${point}-${index}`}
+                className="flex-1 rounded-t-xl bg-gradient-to-t from-violet-500/80 via-cyan-500/80 to-sky-300/80"
+                style={{ height: `${point}%` }}
+              />
             ))}
           </div>
           <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-slate-300">
@@ -104,7 +118,9 @@ export default function HomePage() {
               <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Requests</p>
               <h2 className="mt-2 text-xl font-semibold text-white">Live request stream</h2>
             </div>
-            <button className="rounded-full border border-white/10 bg-slate-950/50 px-3 py-1.5 text-sm text-slate-300">Export</button>
+            <button className="rounded-full border border-white/10 bg-slate-950/50 px-3 py-1.5 text-sm text-slate-300">
+              Export
+            </button>
           </div>
           <div className="overflow-hidden rounded-2xl border border-white/10">
             <table className="min-w-full divide-y divide-white/10 text-left text-sm">
@@ -141,7 +157,9 @@ export default function HomePage() {
                 <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Intelligence</p>
                 <h2 className="mt-2 text-xl font-semibold text-white">Agent status</h2>
               </div>
-              <span className="rounded-full border border-violet-400/20 bg-violet-500/10 px-2 py-1 text-xs text-violet-200">3 active</span>
+              <span className="rounded-full border border-violet-400/20 bg-violet-500/10 px-2 py-1 text-xs text-violet-200">
+                3 active
+              </span>
             </div>
             <div className="mt-5 space-y-4">
               {[
@@ -155,7 +173,10 @@ export default function HomePage() {
                     <span className="text-cyan-300">{agent.score}</span>
                   </div>
                   <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-800">
-                    <div className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-emerald-400" style={{ width: agent.score.replace("%", "") + "%" }} />
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-emerald-400"
+                      style={{ width: `${agent.score.replace("%", "")}%` }}
+                    />
                   </div>
                   <p className="mt-2 text-xs uppercase tracking-[0.18em] text-slate-400">{agent.status}</p>
                 </div>
@@ -168,7 +189,9 @@ export default function HomePage() {
             <h2 className="mt-2 text-3xl font-bold text-white">99.98%</h2>
             <div className="mt-4 flex items-center justify-between text-sm text-slate-300">
               <span>Self-healing enabled</span>
-              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-emerald-200">Resolved</span>
+              <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-emerald-200">
+                Resolved
+              </span>
             </div>
           </div>
         </div>

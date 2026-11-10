@@ -1,34 +1,46 @@
-import {
-  ArrowUpRight,
-  Bot,
-  BrainCircuit,
-  CreditCard,
-  Database,
-  Gauge,
-  Layers3,
-  ShieldCheck,
-  Sparkles,
-  Workflow,
-} from "lucide-react";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-export const cards = [
-  { label: "Applications", value: "48", delta: "+9.4%", trend: "vs last week", tint: "border-cyan-400/20 bg-cyan-500/10 text-cyan-300", icon: Layers3 },
-  { label: "Agents", value: "23", delta: "+4.2%", trend: "active", tint: "border-violet-400/20 bg-violet-500/10 text-violet-300", icon: Bot },
-  { label: "Inference", value: "3.8M", delta: "+18.6%", trend: "requests", tint: "border-emerald-400/20 bg-emerald-500/10 text-emerald-300", icon: Gauge },
-  { label: "Guardrails", value: "99.2%", delta: "+0.8%", trend: "pass rate", tint: "border-rose-400/20 bg-rose-500/10 text-rose-300", icon: ShieldCheck },
-];
+:root {
+  color-scheme: dark;
+}
 
-export const flowBars = [
-  { label: "Prompt stack", value: "94%", values: [38, 52, 62, 74, 86, 94, 98] },
-  { label: "Model route", value: "92%", values: [24, 36, 48, 58, 64, 76, 92] },
-  { label: "Agent tasks", value: "87%", values: [18, 28, 42, 60, 72, 80, 87] },
-];
+html {
+  scroll-behavior: smooth;
+}
 
-export const requestTable = [
-  { route: "/api/copilot/brief", model: "GPT-4.1", latency: "201 ms", cost: "$0.072" },
-  { route: "/api/retrieval/search", model: "Gemini 2.0", latency: "154 ms", cost: "$0.044" },
-  { route: "/api/guardrail/scan", model: "Claude 3.5", latency: "119 ms", cost: "$0.026" },
-  { route: "/api/assist/plan", model: "Llama 3.1", latency: "246 ms", cost: "$0.088" },
-];
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #060d1d;
+  color: #e2e8f0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-export const signalSeries = [32, 48, 55, 63, 78, 72, 82, 90, 88, 96, 94, 100];
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgba(59, 130, 246, 0.45);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.08), 0 20px 40px rgba(15, 23, 42, 0.45);
+}

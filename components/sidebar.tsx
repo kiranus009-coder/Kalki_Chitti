@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Bell, BookOpenText, ChevronDown, LayoutGrid, Search, Sparkles, Zap } from "lucide-react";
+import {
+  Bell,
+  BookOpenText,
+  ChevronDown,
+  LayoutGrid,
+  Sparkles,
+  Zap,
+} from "lucide-react";
 
 const navItems = [
   { href: "/overview", label: "Overview", icon: LayoutGrid },
